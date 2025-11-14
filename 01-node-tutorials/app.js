@@ -1,6 +1,5 @@
-const names = require("./3-modules.js");
-const sayHi = require("./4-utils.js");
+//working with OS module
+const os = require("os");
+const user = os.userInfo();
 
-sayHi("Aqib");
-sayHi(names.john);
-sayHi(names.jane);
+console.log(user);
