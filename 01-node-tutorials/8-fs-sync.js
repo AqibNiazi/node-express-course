@@ -10,3 +10,6 @@ writeFileSync(
 );
 console.log("done with this task");
 console.log("starting the next one");
+
+// Note: The synchronous version blocks the execution until the file operations are complete,
+//  while the asynchronous version allows other operations to run concurrently.
