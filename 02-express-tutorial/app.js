@@ -1,19 +1,19 @@
 const express = require("express");
+
 const app = express();
-const path = require("path");
-
-// setup static and middleware
-app.use(express.static("./public"));
-
+const { products } = require("./data");
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./navbar-app/index.html"));
+  res.send('<h1>Home Page</h1><a href="/api/products">products</a>');
 });
 
-app.all("*", (req, res) => {
-  res.status(404).send("<h1>Resource not found</h1>");
+app.get("/api/products", (req, res) => {
+  const newProducts = products.map((product) => {
+    const { id, name, image } = product;
+    return { id, name, image };
+  });
+  res.json(newProducts);
 });
 
 app.listen(5000, () => {
-  console.log("Server is running on port 5000");
+  console.log("server is listening on port 5000");
 });
-module.exports = app;
